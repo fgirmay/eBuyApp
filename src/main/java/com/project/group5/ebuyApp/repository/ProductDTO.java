@@ -1,24 +1,20 @@
-package com.project.group5.ebuyApp.model;
+package com.project.group5.ebuyApp.repository;
 
-import javax.persistence.*;
-import java.util.Date;
+public class ProductDTO {
 
-@Entity
-public class Product {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productId;
     private String category;
     private String title;
     private String description;
     private double price;
+    private String name;
+    private String email;
+    private String phone;
+    private String city;
+    private String state;
     private String imageUrl;
     private String imageId;
-    @Temporal(TemporalType.DATE)
-    private Date datePosted;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Customer customer;
+    private String datePosted;
 
     public int getProductId() {
         return productId;
@@ -60,6 +56,46 @@ public class Product {
         this.price = price;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
@@ -76,19 +112,11 @@ public class Product {
         this.imageId = imageId;
     }
 
-    public Date getDatePosted() {
+    public String getDatePosted() {
         return datePosted;
     }
 
-    public void setDatePosted(Date datePosted) {
+    public void setDatePosted(String datePosted) {
         this.datePosted = datePosted;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 }

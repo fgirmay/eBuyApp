@@ -1,18 +1,20 @@
 package com.project.group5.ebuyApp.service;
 
+import com.project.group5.ebuyApp.model.Address;
+import com.project.group5.ebuyApp.model.Customer;
 import com.project.group5.ebuyApp.model.Product;
+import com.project.group5.ebuyApp.repository.ProductDTO;
 import com.project.group5.ebuyApp.repository.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class ProductService {
 
-    //private Hashtable<Long, Product> products = new Hashtable<>();
     private List<Product> products = new ArrayList<>();
 
     @Autowired
@@ -33,7 +35,7 @@ public class ProductService {
         product1.setState("state1");
         product1.setImageUrl("https://via.placeholder.com/600/");
         product1.setImageId("92c952");
-        product1.setDate("date1");
+        product1.setDatePosted("date1");
         products.put(1L,product1);
 
         Product product2 = new Product();
@@ -49,7 +51,7 @@ public class ProductService {
         product2.setState("state2");
         product2.setImageUrl("https://via.placeholder.com/600/");
         product2.setImageId("92c952");
-        product2.setDate("date2");
+        product2.setDatePosted("date2");
         products.put(2L,product2);
 
         Product product3 = new Product();
@@ -65,7 +67,7 @@ public class ProductService {
         product3.setState("state3");
         product3.setImageUrl("https://via.placeholder.com/600/");
         product3.setImageId("92c952");
-        product3.setDate("date3");
+        product3.setDatePosted("date3");
         products.put(3L,product3);
 
         Product product4 = new Product();
@@ -81,7 +83,7 @@ public class ProductService {
         product4.setState("state4");
         product4.setImageUrl("https://via.placeholder.com/600/");
         product4.setImageId("92c952");
-        product4.setDate("date4");
+        product4.setDatePosted("date4");
         products.put(4L,product3);
 
         Product product5 = new Product();
@@ -97,7 +99,7 @@ public class ProductService {
         product5.setState("state5");
         product5.setImageUrl("https://via.placeholder.com/600/");
         product5.setImageId("92c952");
-        product5.setDate("date5");
+        product5.setDatePosted("date5");
         products.put(5L,product5);
 
         Product product6 = new Product();
@@ -113,7 +115,7 @@ public class ProductService {
         product6.setState("state6");
         product6.setImageUrl("https://via.placeholder.com/600/");
         product6.setImageId("92c952");
-        product6.setDate("date6");
+        product6.setDatePosted("date6");
         products.put(6L,product6);
 
         Product product7 = new Product();
@@ -129,7 +131,7 @@ public class ProductService {
         product7.setState("state7");
         product7.setImageUrl("https://via.placeholder.com/600/");
         product7.setImageId("92c952");
-        product7.setDate("date7");
+        product7.setDatePosted("date7");
         products.put(7L,product7);
 
         Product product8 = new Product();
@@ -145,7 +147,7 @@ public class ProductService {
         product8.setState("state8");
         product8.setImageUrl("https://via.placeholder.com/600/");
         product8.setImageId("92c952");
-        product8.setDate("date8");
+        product8.setDatePosted("date8");
         products.put(8L,product8);
 
         Product product9 = new Product();
@@ -161,7 +163,7 @@ public class ProductService {
         product9.setState("state9");
         product9.setImageUrl("https://via.placeholder.com/600/");
         product9.setImageId("92c952");
-        product9.setDate("date9");
+        product9.setDatePosted("date9");
         products.put(9L,product9);
 
         Product product10 = new Product();
@@ -177,7 +179,7 @@ public class ProductService {
         product10.setState("state10");
         product10.setImageUrl("https://via.placeholder.com/600/");
         product10.setImageId("92c952");
-        product10.setDate("date10");
+        product10.setDatePosted("date10");
         products.put(10L,product10);*/
         initializeProducts();
 
@@ -190,14 +192,12 @@ public class ProductService {
         product1.setTitle("title1");
         product1.setDescription("descript1");
         product1.setPrice(10);
-        product1.setName("name1");
+/*        product1.setName("name1");
         product1.setEmail("email1");
-        product1.setPhone("phone1");
-        product1.setCity("city1");
-        product1.setState("state1");
-        product1.setImageUrl("https://via.placeholder.com/600/");
+        product1.setPhone("0912659563");*/
+        product1.setImageUrl("https://apod.nasa.gov/apod/image/0604/M81_M82_schedler_c25.jpg");
         product1.setImageId("92c952");
-        product1.setDate("date1");
+        product1.setDatePosted(new Date());
         products.add(product1);
 
         Product product2 = new Product();
@@ -206,14 +206,12 @@ public class ProductService {
         product2.setTitle("title2");
         product2.setDescription("descript2");
         product2.setPrice(10);
-        product2.setName("name2");
+/*        product2.setName("name2");
         product2.setEmail("email2");
-        product2.setPhone("phone2");
-        product2.setCity("city2");
-        product2.setState("state2");
-        product2.setImageUrl("https://via.placeholder.com/600/");
+        product2.setPhone("0912659563");*/
+        product2.setImageUrl("https://apod.nasa.gov/apod/image/0604/M81_M82_schedler_c25.jpg");
         product2.setImageId("92c952");
-        product2.setDate("date2");
+        product2.setDatePosted(new Date());
         products.add(product2);
 
         Product product3 = new Product();
@@ -222,14 +220,12 @@ public class ProductService {
         product3.setTitle("title3");
         product3.setDescription("descript3");
         product3.setPrice(10);
-        product3.setName("name3");
+        /*product3.setName("name3");
         product3.setEmail("email3");
-        product3.setPhone("phone3");
-        product3.setCity("city3");
-        product3.setState("state3");
-        product3.setImageUrl("https://via.placeholder.com/600/");
+        product3.setPhone("0912659563");*/
+        product3.setImageUrl("https://apod.nasa.gov/apod/image/0604/M81_M82_schedler_c25.jpg");
         product3.setImageId("92c952");
-        product3.setDate("date3");
+        product3.setDatePosted(new Date());
         products.add(product3);
 
         Product product4 = new Product();
@@ -238,15 +234,13 @@ public class ProductService {
         product4.setTitle("title4");
         product4.setDescription("descript4");
         product4.setPrice(10);
-        product4.setName("name4");
+        /*product4.setName("name4");
         product4.setEmail("email4");
-        product4.setPhone("phone4");
-        product4.setCity("city4");
-        product4.setState("state4");
-        product4.setImageUrl("https://via.placeholder.com/600/");
+        product4.setPhone("0912659563");*/
+        product4.setImageUrl("https://apod.nasa.gov/apod/image/0604/M81_M82_schedler_c25.jpg");
         product4.setImageId("92c952");
-        product4.setDate("date4");
-        products.add(product3);
+        product4.setDatePosted(new Date());
+        products.add(product4);
 
         Product product5 = new Product();
         product5.setProductId(5);
@@ -254,14 +248,12 @@ public class ProductService {
         product5.setTitle("title5");
         product5.setDescription("descript5");
         product5.setPrice(10);
-        product5.setName("name5");
+        /*product5.setName("name5");
         product5.setEmail("email5");
-        product5.setPhone("phone5");
-        product5.setCity("city5");
-        product5.setState("state5");
-        product5.setImageUrl("https://via.placeholder.com/600/");
+        product5.setPhone("0912659563");*/
+        product5.setImageUrl("https://apod.nasa.gov/apod/image/0604/M81_M82_schedler_c25.jpg");
         product5.setImageId("92c952");
-        product5.setDate("date5");
+        product5.setDatePosted(new Date());
         products.add(product5);
 
         Product product6 = new Product();
@@ -270,14 +262,12 @@ public class ProductService {
         product6.setTitle("title6");
         product6.setDescription("descript6");
         product6.setPrice(10);
-        product6.setName("name6");
+        /*product6.setName("name6");
         product6.setEmail("email6");
-        product6.setPhone("phone6");
-        product6.setCity("city6");
-        product6.setState("state6");
-        product6.setImageUrl("https://via.placeholder.com/600/");
+        product6.setPhone("0912659563");*/
+        product6.setImageUrl("https://apod.nasa.gov/apod/image/0604/M81_M82_schedler_c25.jpg");
         product6.setImageId("92c952");
-        product6.setDate("date6");
+        product6.setDatePosted(new Date());
         products.add(product6);
 
         Product product7 = new Product();
@@ -286,14 +276,12 @@ public class ProductService {
         product7.setTitle("title7");
         product7.setDescription("descript7");
         product7.setPrice(10);
-        product7.setName("name7");
+        /*product7.setName("name7");
         product7.setEmail("email7");
-        product7.setPhone("phone7");
-        product7.setCity("city7");
-        product7.setState("state7");
-        product7.setImageUrl("https://via.placeholder.com/600/");
+        product7.setPhone("0912659563");*/
+        product7.setImageUrl("https://apod.nasa.gov/apod/image/0604/M81_M82_schedler_c25.jpg");
         product7.setImageId("92c952");
-        product7.setDate("date7");
+        product7.setDatePosted(new Date());
         products.add(product7);
 
         Product product8 = new Product();
@@ -302,14 +290,12 @@ public class ProductService {
         product8.setTitle("title8");
         product8.setDescription("descript8");
         product8.setPrice(10);
-        product8.setName("name8");
+        /*product8.setName("name8");
         product8.setEmail("email8");
-        product8.setPhone("phone8");
-        product8.setCity("city8");
-        product8.setState("state8");
-        product8.setImageUrl("https://via.placeholder.com/600/");
+        product8.setPhone("0912659563");*/
+        product8.setImageUrl("https://apod.nasa.gov/apod/image/0604/M81_M82_schedler_c25.jpg");
         product8.setImageId("92c952");
-        product8.setDate("date8");
+        product8.setDatePosted(new Date());
         products.add(product8);
 
         Product product9 = new Product();
@@ -318,14 +304,12 @@ public class ProductService {
         product9.setTitle("title9");
         product9.setDescription("descript9");
         product9.setPrice(10);
-        product9.setName("name9");
+        /*product9.setName("name9");
         product9.setEmail("email9");
-        product9.setPhone("phone9");
-        product9.setCity("city9");
-        product9.setState("state9");
-        product9.setImageUrl("https://via.placeholder.com/600/");
+        product9.setPhone("0912659563");*/
+        product9.setImageUrl("https://apod.nasa.gov/apod/image/0604/M81_M82_schedler_c25.jpg");
         product9.setImageId("92c952");
-        product9.setDate("date9");
+        product9.setDatePosted(new Date());
         products.add(product9);
 
         Product product10 = new Product();
@@ -334,20 +318,18 @@ public class ProductService {
         product10.setTitle("title10");
         product10.setDescription("descript10");
         product10.setPrice(10);
-        product10.setName("name10");
+        /*product10.setName("name10");
         product10.setEmail("email10");
-        product10.setPhone("phone10");
-        product10.setCity("city10");
-        product10.setState("state10");
-        product10.setImageUrl("https://via.placeholder.com/600/");
+        product10.setPhone("0912659563");*/
+        product10.setImageUrl("https://apod.nasa.gov/apod/image/0604/M81_M82_schedler_c25.jpg");
         product10.setImageId("92c952");
-        product10.setDate("date10");
+        product10.setDatePosted(new Date());
         products.add(product10);
     }
 
     public List<Product> getAll() {
-        //return productDao.findAll();
-        return products;
+        return productDao.findAll();
+        //return products;
     }
 
     public Product getById(int productId) {
@@ -357,5 +339,75 @@ public class ProductService {
 
     public void addProduct(Product product) {
         productDao.save(product);
+    }
+
+    public List<ProductDTO> createProductDTOS(List<Product> products) {
+
+        List<ProductDTO> productDTOS = new ArrayList<>();
+        ProductDTO productDTO = new ProductDTO();
+
+        for (Product product : products) {
+            productDTO.setProductId(product.getProductId());
+            productDTO.setCategory(product.getCategory());
+            productDTO.setTitle(product.getTitle());
+            productDTO.setDescription(product.getDescription());
+            productDTO.setPrice(product.getPrice());
+            productDTO.setImageUrl(product.getImageUrl());
+            productDTO.setImageId(product.getImageId());
+            productDTO.setDatePosted(product.getDatePosted().toString());
+
+            //if (product.getCustomer() != null) {
+                productDTO.setName(product.getCustomer().getName());
+                productDTO.setEmail(product.getCustomer().getEmail());
+                productDTO.setPhone(product.getCustomer().getPhoneNumber());
+                productDTO.setCity(product.getCustomer().getAddress().getCity());
+                productDTO.setState(product.getCustomer().getAddress().getState());
+            //}
+
+            productDTOS.add(productDTO);
+        }
+
+        return productDTOS;
+    }
+
+    public Product createProduct(ProductDTO productDTO) {
+
+        Address address = new Address(productDTO.getCity(), productDTO.getState());
+        String name = productDTO.getName();
+        String phone = productDTO.getPhone();
+        String email = productDTO.getEmail();
+        Customer customer = new Customer(name, phone, email, address);
+
+        Product product = new Product();
+        String category = productDTO.getCategory();
+        String title = productDTO.getTitle();
+        String description = productDTO.getDescription();
+        double price = productDTO.getPrice();
+        String imageUrl = productDTO.getImageUrl();
+        String imageId = productDTO.getImageId();
+        String datePosted = productDTO.getDatePosted();
+
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        Date date = null;
+
+
+        try {
+            date = simpleDateFormat.parse(datePosted);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        product.setCategory(category);
+        product.setTitle(title);
+        product.setDescription(description);
+        product.setPrice(price);
+        product.setImageUrl(imageUrl);
+        product.setImageId(imageId);
+        product.setDatePosted(date);
+        product.setCustomer(customer);
+
+        return product;
+
     }
 }
