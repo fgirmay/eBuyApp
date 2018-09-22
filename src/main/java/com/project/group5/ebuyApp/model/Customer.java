@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private int customerId;
     private String name;
     private String phoneNumber;
