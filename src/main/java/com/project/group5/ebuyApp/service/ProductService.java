@@ -394,7 +394,11 @@ public class ProductService {
 
         try {
             date = simpleDateFormat.parse(datePosted);
+
         } catch (ParseException e) {
+
+            System.out.println("Is there anything wrong with the date?");
+
             e.printStackTrace();
         }
 

@@ -52,6 +52,8 @@ public class ProductController {
 
         System.out.println("Wow, adding new product after very long time!!!");
 
+        System.out.println("ProductDTO info is " + newProductDTO);
+
         Product product = productService.createProduct(newProductDTO);
 
         productService.addProduct(product);

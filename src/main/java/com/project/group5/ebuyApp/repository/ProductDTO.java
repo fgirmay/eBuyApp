@@ -119,4 +119,28 @@ public class ProductDTO {
     public void setDatePosted(String datePosted) {
         this.datePosted = datePosted;
     }
+
+    @Override
+    public String toString() {
+
+        /*private int productId;
+        private String category;
+        private String title;
+        private String description;
+        private double price;
+        private String name;
+        private String email;
+        private String phone;
+        private String city;
+        private String state;
+        private String imageUrl;
+        private String imageId;
+        private String datePosted;*/
+
+        return "Category :" + category + ", title : " + title + ", description : " + description + ", price : " + price +
+                ", name : " + name + ", email : " + email + ", phone : " + phone + ", city : " + city + ", state :" + state +
+                ", imageUrl : " + imageUrl + ", imageId : " + imageId + ", datePosted : " + datePosted;
+
+
+    }
 }
