@@ -12,6 +12,7 @@ public class ProductDTO {
     private String phone;
     private String city;
     private String state;
+    private byte[] image;
     private String imageUrl;
     private String imageId;
     private String datePosted;
@@ -114,6 +115,14 @@ public class ProductDTO {
 
     public String getDatePosted() {
         return datePosted;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public void setDatePosted(String datePosted) {

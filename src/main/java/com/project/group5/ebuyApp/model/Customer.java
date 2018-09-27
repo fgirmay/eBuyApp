@@ -6,12 +6,12 @@ import javax.persistence.*;
 public class Customer {
 
     @Id
-    @GeneratedValue
-    private int customerId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int Id;
     private String name;
     private String phoneNumber;
     private String email;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Address address;
 
     public Customer(){}
@@ -23,12 +23,12 @@ public class Customer {
         this.address = address;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getId() {
+        return Id;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setId(int id) {
+        this.Id = id;
     }
 
     public String getName() {

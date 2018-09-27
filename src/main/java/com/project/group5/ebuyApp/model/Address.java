@@ -2,14 +2,15 @@ package com.project.group5.ebuyApp.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Address {
 
     @Id
-    @GeneratedValue
-    private int addressId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int Id;
     private String city;
     private String state;
 
@@ -20,12 +21,12 @@ public class Address {
         this.state = state;
     }
 
-    public int getAddressId() {
-        return addressId;
+    public int getId() {
+        return Id;
     }
 
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
+    public void setId(int id) {
+        this.Id = id;
     }
 
     public String getCity() {

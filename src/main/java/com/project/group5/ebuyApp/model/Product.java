@@ -7,25 +7,25 @@ import java.util.Date;
 public class Product {
 
     @Id
-    @GeneratedValue
-    private int productId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int Id;
     private String category;
     private String title;
     private String description;
     private double price;
-    private String imageUrl;
-    private String imageId;
     @Temporal(TemporalType.DATE)
     private Date datePosted;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Customer customer;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Image image;
 
-    public int getProductId() {
-        return productId;
+    public int getId() {
+        return Id;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setId(int id) {
+        this.Id = id;
     }
 
     public String getCategory() {
@@ -60,22 +60,6 @@ public class Product {
         this.price = price;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(String imageId) {
-        this.imageId = imageId;
-    }
-
     public Date getDatePosted() {
         return datePosted;
     }
@@ -90,5 +74,13 @@ public class Product {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
